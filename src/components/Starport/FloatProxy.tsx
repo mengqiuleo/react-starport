@@ -1,10 +1,10 @@
 /*
  * @Author: Pan Jingyi
  * @Date: 2023-01-01 15:39:01
- * @LastEditTime: 2023-01-01 15:39:06
+ * @LastEditTime: 2023-01-02 01:24:46
  */
 import React, { memo, useContext, useEffect } from 'react'
-import { StarportContext } from './Starport'
+import { StarportContext } from './StarportWrapper'
 const resolvedPromise = Promise.resolve()
 // 代理组件，用于修改全局的metaData
 // 并且将proxyEl这个ref绑定到div上，以便于获取FloatContainer真实位置
