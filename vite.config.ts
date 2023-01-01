@@ -1,31 +1,61 @@
 /*
  * @Author: Pan Jingyi
  * @Date: 2022-12-31 16:18:38
- * @LastEditTime: 2023-01-01 02:57:07
+ * @LastEditTime: 2023-01-01 17:16:34
  */
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-
-// 引入Unocss
-import Unocss from 'unocss/vite';
-import { presetUno, presetAttributify, presetIcons } from 'unocss'
+import WindiCSS from 'vite-plugin-windicss'
+import Unocss from 'unocss/vite'
+import pkg from './package.json'
+import {
+  presetAttributify,
+  presetIcons,
+  presetUno,
+  presetWebFonts,
+} from 'unocss'
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
+    WindiCSS(),
     react(),
-    Unocss({ // 使用Unocss
-      presets: [presetUno(), presetAttributify(), presetIcons()],
-      rules: [
-        ['flex', { display: "flex" }],
-        ['green', { color: "green" }],
-        ['font28', { 'font-size': '40px' }],
-        [/^m-(\d+)$/, ([, d]) => ({ margin: `${Number(d) * 10}px` })],
+    Unocss({
+      shortcuts: [
+        [
+          'icon-btn',
+          'text-[0.9em] inline-block cursor-pointer select-none opacity-75 transition duration-200 ease-in-out hover:opacity-100 hover:text-teal-600',
+        ],
       ],
-      // 组合样式 自定义
-      shortcuts: {
-        fuck: ['green', 'font28']
-      }
-    })
-  ]
+      presets: [
+        presetUno(),
+        presetAttributify(),
+        presetIcons({
+          scale: 1.2,
+          warn: true,
+        }),
+        presetWebFonts({
+          fonts: {
+            serif: 'DM Serif Display',
+            mono: 'DM Mono',
+          },
+        }),
+      ],
+      rules: [
+        ['font28', { 'font-size': '25px' }],
+        ['mar-t', {'margin-top': '20px'}]
+      ]
+    }),
+  ],
+  build: {
+    lib: {
+      entry: './src/main.tsx',
+      formats: ['es', 'umd'],
+      name: pkg.name,
+      fileName: format => `index.${format}.js`,
+    },
+    rollupOptions: {
+      external: ['react', 'react-dom', 'react-router-dom'],
+    },
+  },
 })

@@ -1,9 +1,9 @@
 /*
  * @Author: Pan Jingyi
  * @Date: 2023-01-01 03:27:59
- * @LastEditTime: 2023-01-01 03:28:16
+ * @LastEditTime: 2023-01-01 14:15:38
  */
-import Percent from '../pages/percent'
+// import Percent from '../pages/percent'
 import { useRoutes } from 'react-router-dom'
 import Detail from '../pages/detail'
 import Home from '../pages/home'
@@ -22,10 +22,6 @@ export default () => {
     {
       path: 'none',
       element: <None />,
-    },
-    {
-      path: 'percent',
-      element: <Percent />,
     },
     {
       path: 'transfer-list',
