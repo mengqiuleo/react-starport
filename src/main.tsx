@@ -1,13 +1,13 @@
 /*
  * @Author: Pan Jingyi
  * @Date: 2022-12-31 16:18:38
- * @LastEditTime: 2023-01-01 17:44:53
+ * @LastEditTime: 2023-01-01 19:07:30
  */
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { HashRouter } from 'react-router-dom'
-import 'uno.css'
 import 'virtual:windi.css'
+import 'uno.css'
 
 import App from './App'
 

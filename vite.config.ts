@@ -1,7 +1,7 @@
 /*
  * @Author: Pan Jingyi
  * @Date: 2022-12-31 16:18:38
- * @LastEditTime: 2023-01-01 17:16:34
+ * @LastEditTime: 2023-01-01 19:12:11
  */
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
@@ -48,6 +48,7 @@ export default defineConfig({
     }),
   ],
   build: {
+    cssCodeSplit: true,
     lib: {
       entry: './src/main.tsx',
       formats: ['es', 'umd'],
