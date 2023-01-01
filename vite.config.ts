@@ -1,7 +1,7 @@
 /*
  * @Author: Pan Jingyi
  * @Date: 2022-12-31 16:18:38
- * @LastEditTime: 2023-01-02 01:10:08
+ * @LastEditTime: 2023-01-02 01:59:37
  */
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
@@ -17,6 +17,7 @@ import {
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: "./",
   plugins: [
     WindiCSS(),
     react(),
