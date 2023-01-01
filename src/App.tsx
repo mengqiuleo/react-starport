@@ -1,7 +1,7 @@
 /*
  * @Author: Pan Jingyi
  * @Date: 2022-12-31 16:18:38
- * @LastEditTime: 2023-01-02 01:23:24
+ * @LastEditTime: 2023-01-02 01:46:43
  */
 import React, { memo } from 'react'
 import type { FC, ReactNode } from 'react'
@@ -10,7 +10,7 @@ import Router from './router'
 import imgs from './data'
 
 import TheNav from './components/TheNav'
-import Starport from '@/components/Starport/StarportWrapper'
+import Starport from './components/Starport/StarportWrapper'
 import TheImage from './components/TheImage'
 import Info from './components/Info'
 import FloatContainer from './components/StarPort/FloatContainer'
