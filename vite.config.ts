@@ -1,7 +1,7 @@
 /*
  * @Author: Pan Jingyi
  * @Date: 2022-12-31 16:18:38
- * @LastEditTime: 2023-01-02 01:59:37
+ * @LastEditTime: 2023-01-02 02:41:28
  */
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
@@ -14,10 +14,15 @@ import {
   presetUno,
   presetWebFonts,
 } from 'unocss'
+import path from 'path'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: "./",
+  resolve: {
+    alias: {
+      "/@": path.resolve(__dirname, "./src"),
+    },
+  },
   plugins: [
     WindiCSS(),
     react(),
