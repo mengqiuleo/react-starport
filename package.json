@@ -12,13 +12,16 @@
     "component"
   ],
   "description": "Shared React component across routes with animations",
-  "homepage": "https://github.com/antfu/vue-starport#readme",
+  "homepage": "https://github.com/mengqiuleo/react-starport#readme",
   "repository": {
     "type": "git",
-    "url": "https://github.com/mengqiuleo/react-starport.git"
+    "url": "git+https://github.com/mengqiuleo/react-starport.git"
   },
-  "author": "pjy",
+  "author": "mengqiuleo",
   "license": "MIT",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "dev": "vite",
     "build": "vite build",

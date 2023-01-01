@@ -1,12 +1,11 @@
+<img src="E:\react\react-startport\项目总结\图片\logo.png" style="zoom:25%;" />
+
 <p align="center">
-  <br/>
-  <img src="logo.svg" width="600" />
-  <br/>
+  🛰 跨路由组件共享动画
 </p>
 
-# react-starport
-倘若你希望你的组件在不同的地方使用，在切换的时候保存组件的状态并且拥有平滑的过渡动画，不妨看看这个~
-在线demo：[react-starport.vercel.app/](https://react-starport.vercel.app/)
+倘若你希望你的组件在不同的地方使用，在切换的时候保存组件的状态并且拥有平滑的过渡动画。
+
 
 # 实现思路
 
@@ -39,11 +38,11 @@
 
 
 ```js
-npm i r-starport
+npm i pjy-starport
 ```
 在入口文件引入css
 ```js
-import 'r-starport/style.css'
+import 'pjy-starport/main.css'
 ```
 用Starport组件包裹整个App
 ```jsx
@@ -56,9 +55,9 @@ import 'r-starport/style.css'
 准备工作完成，详细使用看下面的demo
 # demo
 
-倘若我们有这些图片数据需要共享
+倘若我们有些图片数据需要共享
 
-![](https://img.jzsp66.xyz/github/image-20220703165729069.png)
+
 
 那么我们需要先用`Starport`组件包裹整个`App`（一是为了让`FloatContainer`悬浮在整个`App`下，二是让`Starport`包裹住`Router`），并且渲染`FloatContainer`组件，用slot指定要渲染的内容。这里我们要渲染的是一个图片组件`TheImage`
 
@@ -119,95 +118,4 @@ const Foo = memo(() => {
 })
 ```
 
-页面最终渲染如下（图片中的数字是组件内为了标记组件是否重新渲染的组件状态）
 
-![](https://img.jzsp66.xyz/github/image-20220703170334235.png)
-
-点击toggle改变显示大小
-
-![](https://img.jzsp66.xyz/github/QQ录屏20220703170523-1656839312199.gif)
-
-我们再新建一个`TransferList`页面，用到了其中一部分图片，如下所示（我们将前六张图片分成了ListA和ListB进行展示）
-
-```tsx
-const TransferList = memo(() => {
-  const [listA, setListA] = useState(['1', '2', '3'])
-  const [listB, setListB] = useState(['4', '5', '6'])
-
-  return (
-    <div className='w-full flex flex-col items-center '>
-      <div className='py-50px'>current:TransferList</div>
-      <nav>
-		...
-      </nav>
-      <div className='my-5'> 试试看点击图片会发生什么</div>
-      <div flex='~'>
-        <div className='flex flex-col items-center w-60 mr-5'>
-          <span>ListA</span>
-          {listA.map(item => (
-            <FloatProxy
-              onClick={() => {
-                setListA(listA.filter(i => i !== item))
-                setListB([...listB, item])
-              }}
-              key={item}
-              port={item}
-              className='m-5 rounded-xl overflow-hidden w-60 h-30'
-            />
-          ))}
-        </div>
-        <div className='flex flex-col items-center w-60'>
-          <span>ListB</span>
-          {listB.map(item => (
-            <FloatProxy
-              onClick={() => {
-                setListB(listB.filter(i => i !== item))
-                setListA([...listA, item])
-              }}
-              key={item}
-              port={item}
-              className='m-5 rounded-xl overflow-hidden w-60 h-30'
-            />
-          ))}
-        </div>
-      </div>
-    </div>
-  )
-})
-```
-
-渲染结果如下
-
-<p align="center">
-  <br/>
-  <img src="https://img.jzsp66.xyz/github/image-20220703171022293.png" width="400" />
-  <br/>
-</p>
-
-切换路由的时候，会有平滑的补间动画，如下所示
-
-<p align="center">
-  <br/>
-  <img src="https://img.jzsp66.xyz/github/QQ录屏20220703171135.gif" width="600" />
-  <br/>
-</p>
-
-
-
-# 项目难点
-
-- [x] 封装KeepAlive缓存组件解决Portal重新渲染children的问题
-
-- [x] 在update前等待了一个Tick，解决切换路由时Proxy组件渲染抖动的问题
-
-- [x] 修改传入的metadata时，有几率出现Proxy组件渲染抖动问题，这是由于Proxy改变之后Container才变为起飞状态，所以需要在这之前改变Container的landed
-
-- [x] 结合portal完成组件“起飞”和“落地”功能
-
-- [x] 支持百分比的样式
-
-# 使用注意事项
-
-1、最好给FloatProxy一个初始宽高，否则会因为div内部没有内容撑开而引起跳变
-
-~~2、不要给Proxy组件设置与百分比有关的样式~~
