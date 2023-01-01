@@ -1,13 +1,13 @@
 /*
  * @Author: Pan Jingyi
  * @Date: 2023-01-01 15:31:43
- * @LastEditTime: 2023-01-02 01:24:34
+ * @LastEditTime: 2023-01-02 02:45:33
  */
 import React, { memo, useContext, useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { useLocation } from 'react-router-dom'
 import KeepAlive from '../KeepAlive/KeepAlive'
-import { StarportContext } from './StarportWrapper'
+import { StarportContext } from './Starport'
 
 // 用于持有浮动的组件（用插槽显示）
 // 将全局的metadata(样式）传递给slot外面的div

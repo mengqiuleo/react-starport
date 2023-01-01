@@ -1,7 +1,7 @@
 /*
  * @Author: Pan Jingyi
  * @Date: 2022-12-31 16:18:38
- * @LastEditTime: 2023-01-02 02:41:28
+ * @LastEditTime: 2023-01-02 02:44:48
  */
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
@@ -14,15 +14,9 @@ import {
   presetUno,
   presetWebFonts,
 } from 'unocss'
-import path from 'path'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  resolve: {
-    alias: {
-      "/@": path.resolve(__dirname, "./src"),
-    },
-  },
   plugins: [
     WindiCSS(),
     react(),
@@ -53,16 +47,16 @@ export default defineConfig({
       ]
     }),
   ],
-  // build: {
-  //   cssCodeSplit: true,
-  //   lib: {
-  //     entry: './src/main.tsx',
-  //     formats: ['es', 'umd'],
-  //     name: pkg.name,
-  //     fileName: format => `index.${format}.js`,
-  //   },
-  //   rollupOptions: {
-  //     external: ['react', 'react-dom', 'react-router-dom'],
-  //   },
-  // },
+  build: {
+    cssCodeSplit: true,
+    lib: {
+      entry: './src/main.tsx',
+      formats: ['es', 'umd'],
+      name: pkg.name,
+      fileName: format => `index.${format}.js`,
+    },
+    rollupOptions: {
+      external: ['react', 'react-dom', 'react-router-dom'],
+    },
+  },
 })

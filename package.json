@@ -24,9 +24,11 @@
     "build": "vite build",
     "preview": "vite preview"
   },
+  "files": [
+    "dist"
+  ],
   "devDependencies": {
     "@iconify-json/carbon": "^1.1.6",
-    "@rollup/plugin-alias": "^4.0.2",
     "@types/node": "^18.0.1",
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",

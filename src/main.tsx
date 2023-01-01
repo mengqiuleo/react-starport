@@ -1,7 +1,7 @@
 /*
  * @Author: Pan Jingyi
  * @Date: 2022-12-31 16:18:38
- * @LastEditTime: 2023-01-02 01:44:02
+ * @LastEditTime: 2023-01-02 02:45:30
  */
 import React from 'react'
 import ReactDOM from 'react-dom/client'
@@ -17,6 +17,6 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   </HashRouter>
 )
 
-export {default as Starport} from './components/StarPort/StarportWrapper'
+export {default as Starport} from './components/Starport/Starport'
 export {default as FloatProxy} from './components/StarPort/FloatProxy'
 export {default as FloatContainer} from './components/StarPort/FloatContainer'
