@@ -1,11 +1,14 @@
-<img src="./imgs/logo.png" style="zoom:25%;" />
+<p align="center">
+  <img height="300" src="./imgs/logo.png" alt="React Starport">
+</p>
 
 <p align="center">
   🛰 跨路由组件共享动画
 </p>
 <p align="center">
-  <a href="https://react-starport-example.vercel.app/#/" target="_blank">在线演示</a>
+  <a href="https://react-starport-example.vercel.app/#/" target="_blank">live demo</a>
 </p>
+
 
 倘若你希望你的组件在不同的路由下(不同页面下)使用，在切换的时候保存组件的状态并且拥有平滑的过渡动画，可以尝试下这个组件。
 
