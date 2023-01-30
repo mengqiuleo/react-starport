@@ -1,25 +1,17 @@
 /*
  * @Author: Pan Jingyi
- * @Date: 2022-12-31 16:18:38
- * @LastEditTime: 2023-01-02 02:45:38
+ * @Date: 2022-12-31 01:44:19
+ * @LastEditTime: 2023-01-30 22:55:25
  */
-import React, { memo } from 'react'
-import type { FC, ReactNode } from 'react'
-
-import Router from './router'
-import imgs from './data'
-
-import TheNav from './components/TheNav'
-import Starport from './components/Starport/Starport'
 import TheImage from './components/TheImage'
-import Info from './components/Info'
 import FloatContainer from './components/StarPort/FloatContainer'
+import Router from './router'
+import Starport from './components/StarPort/Starport'
+import Info from './components/Info'
+import TheNav from './components/TheNav'
+import imgs from './data/index'
 
-interface IProps {
-  children?: ReactNode
-}
-
-const App: FC<IProps> = () => {
+function App() {
   return (
     <Starport>
       <div className='bg-white w-full text-[#374751] h-full'>
@@ -43,4 +35,4 @@ const App: FC<IProps> = () => {
   )
 }
 
-export default memo(App)
+export default App

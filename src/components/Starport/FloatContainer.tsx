@@ -1,7 +1,7 @@
 /*
  * @Author: Pan Jingyi
  * @Date: 2023-01-01 15:31:43
- * @LastEditTime: 2023-01-02 02:45:33
+ * @LastEditTime: 2023-01-30 22:02:21
  */
 import React, { memo, useContext, useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
@@ -9,6 +9,7 @@ import { useLocation } from 'react-router-dom'
 import KeepAlive from '../KeepAlive/KeepAlive'
 import { StarportContext } from './Starport'
 
+//* 悬浮在根组件下的真正的组件
 // 用于持有浮动的组件（用插槽显示）
 // 将全局的metadata(样式）传递给slot外面的div
 // div的m-!0是因为margin在offset计算中已经算进去了，如果有的话也不需要添加
@@ -17,6 +18,7 @@ const defaultStyle = {
   transform: 'translateY(-20px)',
 }
 let timer = {} as any
+//接收参数为：一个slot和一个port
 const FloatContainer = memo((props: { slot: () => JSX.Element; port: string }) => {
   const location = useLocation()
 
@@ -33,10 +35,10 @@ const FloatContainer = memo((props: { slot: () => JSX.Element; port: string }) =
   const update = async () => {
     // 等待一个tick，不然的话会出现抖动
     await Promise.resolve().then(() => {})
-    setLanded(false)
-    if (divRef.current) {
-      const style = divRef.current.style
-      const rect = proxyElArr[props.port]?.current?.getBoundingClientRect?.()
+    setLanded(false) //设置现在起飞
+    if (divRef.current) { //刚开始执行时为null
+      const style = divRef.current.style 
+      const rect = proxyElArr[props.port]?.current?.getBoundingClientRect?.() //获取元素位置信息
       if (rect) {
         const scrollTop = document.body.scrollTop || document.documentElement.scrollTop
         const scrollLeft = document.body.scrollLeft || document.documentElement.scrollLeft
@@ -63,6 +65,9 @@ const FloatContainer = memo((props: { slot: () => JSX.Element; port: string }) =
       window.removeEventListener('resize', update)
     }
   }, [location.pathname, metadata])
+
+  console.log('metadata: ', metadata)
+
   return (
     <div
       {...metadata[props.port]}
