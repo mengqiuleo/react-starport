@@ -1,7 +1,7 @@
 /*
  * @Author: Pan Jingyi
  * @Date: 2023-01-01 03:18:57
- * @LastEditTime: 2023-01-01 18:30:05
+ * @LastEditTime: 2023-01-30 23:55:46
  */
 import { Link, useParams } from 'react-router-dom'
 import FloatProxy from '../components/StarPort/FloatProxy'
@@ -11,7 +11,7 @@ import React, { memo } from 'react'
 const Detail = memo(() => {
   const [size, setSize] = useState(200)
   const params = useParams()
-  console.log(((Number(params.id) + 1) % 12) + '')
+  // console.log(((Number(params.id) + 1) % 12) + '')
   return (
     <>
       <div className='w-full flex flex-col items-center '>

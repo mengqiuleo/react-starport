@@ -1,7 +1,7 @@
 /*
  * @Author: Pan Jingyi
  * @Date: 2023-01-01 15:31:43
- * @LastEditTime: 2023-01-30 22:02:21
+ * @LastEditTime: 2023-01-31 02:00:13
  */
 import React, { memo, useContext, useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
@@ -23,6 +23,7 @@ const FloatContainer = memo((props: { slot: () => JSX.Element; port: string }) =
   const location = useLocation()
 
   const { metadata, proxyElArr, setLandedMap } = useContext(StarportContext)
+
   // 起飞落地的状态
   const [landed, setLanded] = useState(true)
   const divRef = useRef<HTMLElement>(null)
@@ -36,7 +37,7 @@ const FloatContainer = memo((props: { slot: () => JSX.Element; port: string }) =
     // 等待一个tick，不然的话会出现抖动
     await Promise.resolve().then(() => {})
     setLanded(false) //设置现在起飞
-    if (divRef.current) { //刚开始执行时为null
+    if (divRef.current) { 
       const style = divRef.current.style 
       const rect = proxyElArr[props.port]?.current?.getBoundingClientRect?.() //获取元素位置信息
       if (rect) {
@@ -59,14 +60,14 @@ const FloatContainer = memo((props: { slot: () => JSX.Element; port: string }) =
   }
 
   useEffect(() => {
+    // console.log('一份缓存组件')
     update()
     window.addEventListener('resize', update)
     return () => {
       window.removeEventListener('resize', update)
     }
-  }, [location.pathname, metadata])
+  }, [location.pathname, metadata]) //监听如果路由切换或者组件位置发生变化，就执行
 
-  console.log('metadata: ', metadata)
 
   return (
     <div

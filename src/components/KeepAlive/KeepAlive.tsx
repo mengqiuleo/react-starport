@@ -1,7 +1,7 @@
 /*
  * @Author: Pan Jingyi
  * @Date: 2023-01-01 15:22:37
- * @LastEditTime: 2023-01-30 21:37:43
+ * @LastEditTime: 2023-01-31 00:19:52
  */
 import React, { useRef, useEffect } from 'react'
 
@@ -14,6 +14,7 @@ const KeepAlive = (props: any) => {
   const appendPortalElement = () => {
     // 根据id获取到缓存的element，通过appendChild添加到div中
     const portalElement = getPortalElement(id, children)
+    //在这里通过getPortalElement函数设置nodes
     keepAliveRef.current!.appendChild(portalElement)
   }
   useEffect(() => {
