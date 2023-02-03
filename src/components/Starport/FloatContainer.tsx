@@ -1,7 +1,7 @@
 /*
  * @Author: Pan Jingyi
  * @Date: 2023-01-01 15:31:43
- * @LastEditTime: 2023-01-31 02:00:13
+ * @LastEditTime: 2023-02-04 04:27:18
  */
 import React, { memo, useContext, useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
@@ -85,14 +85,14 @@ const FloatContainer = memo((props: { slot: () => JSX.Element; port: string }) =
       {
         //如果有metadata才显示插槽，防止抖动
         metadata[props.port] &&
-          (landed && proxyElArr[props.port]?.current ? (
+          (landed && proxyElArr[props.port]?.current ? ( //这里是落地了，会传送到文档流中
             createPortal(
               <KeepAlive id={props.port}>
                 <props.slot />
               </KeepAlive>,
               proxyElArr[props.port]?.current
             )
-          ) : (
+          ) : ( //未落地 keepAlive组件是对children进行了缓存，如何缓存：因为之前我们保存了状态(useContext)，那么从它中拿出渲染
             <KeepAlive id={props.port}>
               <props.slot />
             </KeepAlive>

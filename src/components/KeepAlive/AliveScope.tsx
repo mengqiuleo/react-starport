@@ -1,7 +1,7 @@
 /*
  * @Author: Pan Jingyi
  * @Date: 2023-01-01 15:13:02
- * @LastEditTime: 2023-01-31 01:41:50
+ * @LastEditTime: 2023-02-04 04:29:06
  */
 import React, { useContext, createContext, useState, ReactElement } from 'react'
 import ReactDOM from 'react-dom'
@@ -34,10 +34,10 @@ export const AliveScope = (props: any) => {
   }
 
    //console.log('nodes: ', nodes) //nodes存储了所有需要缓存的组件
-   //console.log('根缓存组件')
   
   // 会不断重复执行，因为组件的状态(存储信息)可能会发生变化
 
+  //这里才是渲染在文档流中
   return (
     <AliveScopeContext.Provider value={getPortalElement}>
       {Object.entries<any>(nodes).map(([id, { children, element }]) => (
